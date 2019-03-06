@@ -1,0 +1,7 @@
+new repository 2
+this is my first git project
+i like essay
+i like RA 
+i like apple
+i like DA
+I like VT
