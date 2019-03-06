@@ -1,0 +1,6 @@
+This practical is benficial from which I learnt a lot during exploration. 
+I realized a common way to overcome errors is redoing things again.
+Also, "revert" botton is only applied to the latest commit.
+However, I am still confused about the "amend" and "revert" botton. I think they are doing the same things, is the difference just whether to save the previous change??
+I also wonder how to submit homework if we have done the project.
+Finally, thanks for giving the interesting practical for me!
