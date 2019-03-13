@@ -16,7 +16,5 @@ while 1==1:
         print(n)
 #interrupt when firstly reach 4,2,1
         if n==1:
-            break
-
-
+            break 
 
