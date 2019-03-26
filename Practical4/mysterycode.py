@@ -1,5 +1,5 @@
 # What does this piece of code do?
-# Answer: It keeps picking numbers from 2 to 100 randomly; when it first encounters a prime number, it stops and returns the number.
+# Answer: It keeps randomly picking numbers from 1 (included) to 100 (not included); when it first encounters a prime number, it stops and returns the number.
 # Import libraries
 # randint allows drawing a random number, 
 # e.g. randint(1,5) draws a number between 1 and 5
