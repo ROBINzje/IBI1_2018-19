@@ -20,7 +20,11 @@ email_new=[]
 
 re_loginname = re.compile(r'(\S+)@')
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 fhand = open(r'D:\test\IBI1_2018-19\practical6\address_information.csv','r')
+=======
+fhand = open(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical6\address_information.csv','r')
+>>>>>>> Stashed changes
 =======
 fhand = open(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical6\address_information.csv','r')
 >>>>>>> Stashed changes
@@ -54,7 +58,11 @@ for m in All:
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 body = open(r'D:\test\IBI1_2018-19\practical6\body.txt')
+=======
+body = open(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical6\body.txt')
+>>>>>>> Stashed changes
 =======
 body = open(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical6\body.txt')
 >>>>>>> Stashed changes
