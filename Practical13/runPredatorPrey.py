@@ -55,6 +55,10 @@ def xml_to_cps():
     
 #------------------------------------------------------------------------------
 xml_to_cps() 
+import os
+os.chdir('C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical13')
+os.system('C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical13\CopasiSE predator-prey.cps')
+
 
 import numpy as np
 import re
