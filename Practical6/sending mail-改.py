@@ -19,7 +19,11 @@ name_new=[]
 email_new=[]
 
 re_loginname = re.compile(r'(\S+)@')
+<<<<<<< Updated upstream
 fhand = open(r'D:\test\IBI1_2018-19\practical6\address_information.csv','r')
+=======
+fhand = open(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical6\address_information.csv','r')
+>>>>>>> Stashed changes
 #use with statement to close file after it is used.
 #with open(lfile,'r') as infor
 read=fhand.read()
@@ -49,7 +53,11 @@ for m in All:
 
 
 
+<<<<<<< Updated upstream
 body = open(r'D:\test\IBI1_2018-19\practical6\body.txt')
+=======
+body = open(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical6\body.txt')
+>>>>>>> Stashed changes
 text = ''
 for line in body:
     text += line #read body line by line
