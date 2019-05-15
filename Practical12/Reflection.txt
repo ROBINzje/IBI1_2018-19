@@ -1,0 +1,4 @@
+Reflection
+	I learnt to create possibiility model with the very useful function numpy.random.choice, and it is easy to understand. I found it difficult to plot multiple curves using pyplot at first. I will get myself familiar with it by reading the pyplot document later. 
+	It is a good practice for me to start with a simple SIR model and then change some conditions such as vaccination and neighbour-infection. Inspired by Melanie's code, the number of neighbors the infected people could contact at a time was specified. Other considerations could be taken (but not yet), so for example, people infected can die if not treated for a specific length of time.
+	I really enjoy plotting the 2D models and I will learn to visualize it more intuisively using a small video.

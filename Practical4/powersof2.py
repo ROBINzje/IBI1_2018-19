@@ -5,7 +5,7 @@ Created on Wed Mar 13 10:42:12 2019
 @author: ROBIN
 """
 #get n from user and change into integer
-n=input("n=")
+n=int(input('give me a number: '))
 #create a string
 st=str(n + " is ")
 #change n into number
