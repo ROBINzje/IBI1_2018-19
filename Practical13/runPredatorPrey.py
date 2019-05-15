@@ -53,16 +53,14 @@ def xml_to_cps():
     cpsTree.writexml(cpsFile)
     cpsFile.close()
     
-        
-        
 #------------------------------------------------------------------------------
 xml_to_cps() 
-#os.system("")
+
 import numpy as np
 import re
 import matplotlib.pyplot as plt
 results=[]
-#import os
+#read csv file, convert it into numpy arrays
 with open('modelResults.csv') as file:
     file=file.readlines()
     for i in range(len(file)):
@@ -71,10 +69,12 @@ with open('modelResults.csv') as file:
         line.remove('')
         results.append(line)
     results=np.array(results)
+    #convert data str to floats
     results=results[1:].astype(np.float)
 
 
 #########time course visualization#########
+    
 #size and dpi of figure
 plt.figure(figsize =(6,4),dpi=150)
 #data for each curves
@@ -89,7 +89,9 @@ plt.ylabel('population size')
 plt.title('Time course')
 plt.show()
 
+
 #########limit cycle visualization#########
+
 #size and dpi of figure
 plt.figure(figsize =(6,4),dpi=150)
 #data for each curves
@@ -101,29 +103,29 @@ plt.ylabel('prey population')
 plt.title('Limit cycle')
 plt.show()
 
-#########change parameters#########
+
+#########change parameters and visualization#########
+
 import xml.dom.minidom
 DOMTree=xml.dom.minidom.parse("predator-prey_copy.xml")
 collection=DOMTree.documentElement
 para=collection.getElementsByTagName('parameter')
+#find and change parameters
 for i in para:
     if i.getAttribute('id')=='k_predator_breeds':
         i.setAttribute('value','0.3')
-        print(i.attributes['value'].value)
     if i.getAttribute('id')=='k_predator_dies':
         i.setAttribute('value','0.1')
-        print(i.attributes['value'].value)
     if i.getAttribute('id')=='k_prey_breeds':
         i.setAttribute('value','0.9')
-        print(i.attributes['value'].value)
     if i.getAttribute('id')=='k_prey_dies':
         i.setAttribute('value','0.3')
-        print(i.attributes['value'].value)
-copy = open('predator-prey_copy.xml','w')
-DOMTree.writexml(copy)
-copy.close()
-xml_to_cps('predator-prey_copy.xml','predator-prey_copy.cps')
-
+#rewrite xml
+modi=open('predator-prey.xml','w')
+DOMTree.writexml(modi)
+modi.close()
+xml_to_cps()
+#read csv file, convert it into numpy arrays
 with open('modelResults.csv') as file:
     file=file.readlines()
     for i in range(len(file)):
@@ -136,97 +138,39 @@ with open('modelResults.csv') as file:
 
 
 #time course visualization
-#size and dpi of figure
 plt.figure(figsize =(6,4),dpi=150)
-#data for each curves
-plt.plot(results[:,0],results[:,1], label='Predator(b=0.02,d=0.4)')
-plt.plot(results[:,0],results[:,2], label='Prey(b=0.1,d=0.02)')
-#for multiple curves use legend to be more clear
+plt.plot(results[:,0],results[:,1], label='Predator(b=0.3,d=0.1)')
+plt.plot(results[:,0],results[:,2], label='Prey(b=0.9,d=0.3)')
 plt.legend()
-#the x,y labels
 plt.xlabel('time')
 plt.ylabel('population size')
-#title
 plt.title('Time course')
 plt.show()
 
 #limit cycle visualization
-#size and dpi of figure
 plt.figure(figsize =(6,4),dpi=150)
-#data for each curves
 plt.plot(results[:,1],results[:,2])
-#the x,y labels
 plt.xlabel('predator population')
 plt.ylabel('prey population')
-#title
 plt.title('Limit cycle')
 plt.show()
 
 #########many changes to the parameters#########
-t=0
-while t<100:
-    t+=1
-    for i in range(0,4):
-        np.random.sample()
-para=collection.getElementsByTagName('parameter')
-for i in para:
-    if i.getAttribute('id')=='k_predator_breeds':
-        i.setAttribute('value','0.3')
-        print(i.attributes['value'].value)
-    if i.getAttribute('id')=='k_predator_dies':
-        i.setAttribute('value','0.1')
-        print(i.attributes['value'].value)
-    if i.getAttribute('id')=='k_prey_breeds':
-        i.setAttribute('value','0.9')
-        print(i.attributes['value'].value)
-    if i.getAttribute('id')=='k_prey_dies':
-        i.setAttribute('value','0.3')
-        print(i.attributes['value'].value)
-copy = open('predator-prey_copy.xml','w')
-DOMTree.writexml(copy)
-copy.close()
-xml_to_cps('predator-prey_copy.xml','predator-prey_copy.cps')
 
-with open('modelResults.csv') as file:
-    file=file.readlines()
-    for i in range(len(file)):
-        line=file[i]
-        line=re.split(r',|\n',line)
-        line.remove('')
-        results.append(line)
-    results=np.array(results)
-    results=results[1:].astype(np.float)
-
-
-#time course visualization
-#size and dpi of figure
-plt.figure(figsize =(6,4),dpi=150)
-#data for each curves
-plt.plot(results[:,0],results[:,1], label='Predator(b=0.02,d=0.4)')
-plt.plot(results[:,0],results[:,2], label='Prey(b=0.1,d=0.02)')
-#for multiple curves use legend to be more clear
-plt.legend()
-#the x,y labels
-plt.xlabel('time')
-plt.ylabel('population size')
-#title
-plt.title('Time course')
-plt.show()
-
-#limit cycle visualization
-#size and dpi of figure
-plt.figure(figsize =(6,4),dpi=150)
-#data for each curves
-plt.plot(results[:,1],results[:,2])
-#the x,y labels
-plt.xlabel('predator population')
-plt.ylabel('prey population')
-#title
-plt.title('Limit cycle')
-plt.show()
-
-
-
+#hypothesis: as the k_predator_dies increasing （less than k_predator_breeds), the oscillation amplitude and the periodic time will decrease
+#SET T=0
+#WHILE T<=200:
+    #T+=1
+    #set k_predator_dies as 0.001*T, the other parameters are the same as the previous task (k_predator_breeds=0.3,k_prey_breeds=0.9,k_prey_dies=0.3)
+    #in predator-prey.xml, change k_predator_dies
+    #use function xml_to_cps() to get csv file
+    #read csv file and convert it to numpy arrays like before
+    #in the console, plot using time course (with labels specified each time)
+    
+#analysis: 
+#in this model, k_predator_dies is gradually increasing, while the other parameters stay the same.
+# compare each figure and find the relationship between the value of k_predator_dies and the oscillation amplitude
+#as well as the period time
 
 
     
