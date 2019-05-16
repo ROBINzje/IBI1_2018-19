@@ -1,6 +1,9 @@
+Complexity Estimation
+
 Assume there are n elements in the current list. The whole process takes time T(n).
 The number of combination of 2 elements: n*(n-1)
 For each combination do resursion which needs time T(n-1).
-The worst situation is no 24 can be found: T(n)=n*(n-1)*T(n-1)*6 because there are 6 'if' loops
-So T(n)=n*(n-1)!^2*6^(n-1)
-Algorithm complexity O(n)=(n-1)!^2
+the last recursion could be ignored for convenience because the algorithm complexity only look for the largest time
+The worst situation is no 24 can be found: T(n)≈n*(n-1)/2*T(n-1)*6 because there are 6 'if' loops (note: use'≈' but not '=')
+So T(n)≈n * (n-1)!^2 * 4 * 3^(n-1)
+Algorithm complexity is O(n * (n-1)!^2 * 3^(n-1))
