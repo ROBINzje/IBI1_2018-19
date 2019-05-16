@@ -112,7 +112,7 @@ plt.show()
 #########change parameters and visualization###################################
 
 import xml.dom.minidom
-DOMTree=xml.dom.minidom.parse('predator-prey_copy.xml')
+DOMTree=xml.dom.minidom.parse('predator-prey.xml')
 collection=DOMTree.documentElement
 para=collection.getElementsByTagName('parameter')
 #find and change parameters
