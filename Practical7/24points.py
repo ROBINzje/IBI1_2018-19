@@ -10,56 +10,59 @@ from fractions import Fraction
 numstr=input("Please input numbers to computer 24:(use ',' to divide them)\n")
 #recursive function to calculate 24 points
 def Cal(n):
-            global t
-            #counter
-            t+=1
-            #at the bottom of the recursion 'tree' check the result
-            if n == 1:
-                if float(num[0]) == 24:
-                    return 1#'1' indicates 24 has been calculated successifully
-                else:
-                    return 0#'0' indicates no '24' was found
-            else:
-                #choose 2 numbers i,j in order for operation. n is the list length
-                for i in range(n):
-                    for j in range(i+1,n):
-                        #store i,j in a,b
-                        a = num[i]
-                        b = num[j]
-                        #remove i,j
-                        #the last number that replaces j
-                        num[j] = num[n-1]
+    global t
+    #counter
+    t+=1
+    #at the bottom of the recursion 'tree' check the result
+    if n == 1:
+        if float(num[0]) == 24:
+            return 1#'1' indicates 24 has been calculated successifully
+        else:
+            return 0#'0' indicates no '24' was found
+    else:
+        #choose 2 numbers i,j in order for operation. n is the list length
+        for i in range(n):
+            for j in range(i+1,n):
+                #store i,j in a,b
+                a = num[i]
+                b = num[j]
+                #remove i,j
+                #the last number that replaces j
+                num[j] = num[n-1]
                         
-                        #use 4 operations to calculate a new number and replace i in list
-                        num[i] = a+b
-                        #recursion is used for each operation respectively
-                        if Cal(n-1):
-                            return 1
+                #use 4 operations to calculate a new number and replace i in list
+                num[i] = a+b
+                #recursion is used for each operation respectively
+                if Cal(n-1):
+                    return 1
                         
-                        num[i] = a-b
-                        if Cal(n-1):
-                            return 1
+                num[i] = a-b
+                if Cal(n-1):
+                    return 1
                     
-                        num[i] = b-a
-                        if Cal(n-1):
-                            return 1
+                num[i] = b-a
+                if Cal(n-1):
+                    return 1
                     
-                        num[i] = a*b
-                        if Cal(n-1):
-                            return 1
-                        #floats are not precise.
-                        #if floats are used, use approximate number in the result (a small range around 24)
-                        if a != 0:
-                            num[i] = Fraction(b,a)
-                            if Cal(n-1):
-                                return 1
+                num[i] = a*b
+                if Cal(n-1):
+                    return 1
+                #floats are not precise.
+                #if floats are used, use approximate number in the result (a small range around 24)
+                if a != 0:
+                    num[i] = Fraction(b,a)
+                    if Cal(n-1):
+                        return 1
                             
-                        if b != 0:
-                            num[i] = Fraction(a,b)
-                            if Cal(n-1):
-                                return 1
+                if b != 0:
+                    num[i] = Fraction(a,b)
+                    if Cal(n-1):
+                        return 1
+                #Backtracking  
+                num[i] = a
+                num[j] = b
             
-            return 0
+    return 0
 #input must be integers not floats
 if "." in numstr or "/" in numstr:
     print("The input number must be integers from 1 to 23")
@@ -82,4 +85,4 @@ else:
         else:
             print("No")
         #print recursion time
-        print("Recursion times:"+str(t))
+        print('Recursion times:'+str(t))

@@ -10,58 +10,59 @@ def xml_to_cps():
     import xml.dom.minidom
     
     # first, convert xml to cps 
-    os.system("CopasiSE.exe -i predator-prey.xml -s predator-prey.cps")
+    os.system('CopasiSE.exe -i predator-prey.xml -s predator-prey.cps')
     
     # now comes the painful part. Just copy and paste this ok
     
-    cpsTree = xml.dom.minidom.parse("predator-prey.cps")
+    cpsTree = xml.dom.minidom.parse('predator-prey.cps')
     cpsCollection = cpsTree.documentElement
     
-    reportFile = xml.dom.minidom.parse("report_ref.xml")
+    reportFile = xml.dom.minidom.parse('report_ref.xml')
     reportLine = reportFile.documentElement
     
-    tasks = cpsCollection.getElementsByTagName("Task")
+    tasks = cpsCollection.getElementsByTagName('Task')
     for task in tasks:
-        if task.getAttribute("name")=="Time-Course":
-            task.setAttribute("scheduled","true")
+        if task.getAttribute('name')=='Time-Course':
+            task.setAttribute('scheduled','true')
             task.insertBefore(reportLine,task.childNodes[0])
             break
         
     
     for taskDetails in task.childNodes:
         if taskDetails.nodeType ==1:
-            if taskDetails.nodeName == "Problem":
+            if taskDetails.nodeName == 'Problem':
                 problem = taskDetails
                 
     for param in problem.childNodes:
         if param.nodeType ==1:
-            if param.getAttribute("name")=="StepNumber":
-                param.setAttribute("value","200")
-            if param.getAttribute("name")=="StepSize":
-                param.setAttribute("value","1")
-            if param.getAttribute("name")=="Duration":
-                param.setAttribute("value","200")
+            if param.getAttribute('name')=='StepNumber':
+                param.setAttribute('value','200')
+            if param.getAttribute('name')=='StepSize':
+                param.setAttribute('value','1')
+            if param.getAttribute('name')=='Duration':
+                param.setAttribute('value','200')
            
             
-    report18 = xml.dom.minidom.parse("report18.xml")
+    report18 = xml.dom.minidom.parse('report18.xml')
     report = report18.documentElement
     
-    listOfReports  =  cpsCollection.getElementsByTagName("ListOfReports")[0]
+    listOfReports  =  cpsCollection.getElementsByTagName('ListOfReports')[0]
     listOfReports.appendChild(report)
     
-    cpsFile = open("predator-prey.cps","w",encoding='utf-8')
+    cpsFile = open('predator-prey.cps','w',encoding='utf-8')
     cpsTree.writexml(cpsFile)
     cpsFile.close()
     
 #------------------------------------------------------------------------------
+
 xml_to_cps() 
 import os
-os.chdir('C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical13')
-os.system('C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical13\CopasiSE predator-prey.cps')
+import re
+os.chdir(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical13')
+os.system(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical13\CopasiSE predator-prey.cps')
 
 
 import numpy as np
-import re
 import matplotlib.pyplot as plt
 results=[]
 #read csv file, convert it into numpy arrays
@@ -77,7 +78,7 @@ with open('modelResults.csv') as file:
     results=results[1:].astype(np.float)
 
 
-#########time course visualization#########
+#########time course visualization#############################################
     
 #size and dpi of figure
 plt.figure(figsize =(6,4),dpi=150)
@@ -94,7 +95,7 @@ plt.title('Time course')
 plt.show()
 
 
-#########limit cycle visualization#########
+#########limit cycle visualization#############################################
 
 #size and dpi of figure
 plt.figure(figsize =(6,4),dpi=150)
@@ -108,10 +109,10 @@ plt.title('Limit cycle')
 plt.show()
 
 
-#########change parameters and visualization#########
+#########change parameters and visualization###################################
 
 import xml.dom.minidom
-DOMTree=xml.dom.minidom.parse("predator-prey_copy.xml")
+DOMTree=xml.dom.minidom.parse('predator-prey_copy.xml')
 collection=DOMTree.documentElement
 para=collection.getElementsByTagName('parameter')
 #find and change parameters
@@ -159,22 +160,21 @@ plt.ylabel('prey population')
 plt.title('Limit cycle')
 plt.show()
 
-#########many changes to the parameters#########
+#########many changes to the parameters########################################
 
-#hypothesis: as the k_predator_dies increasing （less than k_predator_breeds), the oscillation amplitude and the periodic time will decrease
+#hypothesis: as the k_predator_dies increasing （less than k_predator_breeds), the oscillation amplitudes and the periodic time will decrease
 #SET T=0
 #WHILE T<=200:
     #T+=1
     #set k_predator_dies as 0.001*T, the other parameters are the same as the previous task (k_predator_breeds=0.3,k_prey_breeds=0.9,k_prey_dies=0.3)
-    #in predator-prey.xml, change k_predator_dies
+    #in the predator-prey.xml, change k_predator_dies
     #use function xml_to_cps() to get csv file
-    #read csv file and convert it to numpy arrays like before
+    #read csv file and convert it to numpy arrays like the previous tasks
     #in the console, plot using time course (with labels specified each time)
     
 #analysis: 
 #in this model, k_predator_dies is gradually increasing, while the other parameters stay the same.
-# compare each figure and find the relationship between the value of k_predator_dies and the oscillation amplitude
-#as well as the period time
+#compare each figure and find the relationship between the value of k_predator_dies and the oscillation amplitudes as well as the periodic times
 
 
     

@@ -24,7 +24,7 @@ population[outbreak[0],outbreak[1]]=1
 beta=.3
 gamma=.05
 # an infected person can contact v people at one time. v is specified as 5.
-v=5
+v=8
 #initialize time for the loop
 t=0
 #go through the loop for 100 times
