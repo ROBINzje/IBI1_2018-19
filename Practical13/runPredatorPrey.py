@@ -165,11 +165,12 @@ plt.show()
 #hypothesis: as the k_predator_dies increasing （less than k_predator_breeds), the oscillation amplitudes and the periodic time will decrease
 #SET T=0
 #WHILE T<=200:
+    #OPEN file predator-prey.xml
     #T+=1
-    #set k_predator_dies as 0.001*T, the other parameters are the same as the previous task (k_predator_breeds=0.3,k_prey_breeds=0.9,k_prey_dies=0.3)
-    #in the predator-prey.xml, change k_predator_dies
+    #SET ATTRIBUTE k_predator_dies as 0.001*T, the other parameters are the same as the previous task (k_predator_breeds=0.3,k_prey_breeds=0.9,k_prey_dies=0.3)
+    #rewrite predator-prey.xml znd close it
     #use function xml_to_cps() to get csv file
-    #read csv file and convert it to numpy arrays like the previous tasks
+    #WITH csv file OPEN, convert it to numpy arrays like the previous tasks
     #in the console, plot using time course (with labels specified each time)
     
 #analysis: 
