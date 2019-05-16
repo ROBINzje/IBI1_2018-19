@@ -28,7 +28,7 @@ v=8
 #initialize time for the loop
 t=0
 #go through the loop for 100 times
-while t<=50:
+while t<=100:
     #counter
     t+=1
     '''reference Melanie's work in describing infection process 

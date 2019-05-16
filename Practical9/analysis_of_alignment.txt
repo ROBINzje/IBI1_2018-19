@@ -1,4 +1,10 @@
 conclusion:
 (seq1: human;seq2: mouse; seq3: random, all of them are of the same length)
-The overall score was the sum of the similarity score of each amino acid between two corresponding polypeptides using BLOSUM62. The scores (shown by 'overall score') of seq1 and seq2, seq1 and seq3, seq2 and seq3 were 1091, -250, -250 respectively. The high positive score of seq1 and seq2 indicated the two sequences are similar, and thereby human and mice have a close evolutionary relationship. By contrast, the two same negative value indicated seq3 has little relationship with seq1 and seq2. Also, the 'degree' of differences between seq1 and seq3, seq2 and seq3 are the same.
-However, if we are going to compare the	output scores between the proteins containing 100 amino acids and another set of proteins containing 500 amino acids, the overall score will be unreliable. One possible adjustment is just showing the average score of each amino acid (shown by 'score for each amino acid' in the console). 
+
+The overall score was the sum of the similarity score of each amino acid between two corresponding polypeptides using BLOSUM62. 
+The overall scores of seq1 and seq2, seq1 and seq3, seq2 and seq3 were 1091, -250, -250 respectively.
+The normalized scores were 4.914, -1.126, -1.126 respectively in case of different lengths of sequence pairs.
+The high positive score of seq1 and seq2 indicated the two sequences are similar, and thereby human and mice have a close evolutionary relationship. By contrast, the two same negative value indicated seq3 has little relationship with seq1 and seq2. 
+
+The identities were 89.64%, 5.41% and 5.86% respectively which reflected the ratios of exactly matched amino acids.
+The identities also reflected the high similarity of seq1 and seq2 but not as reliable as the scores using BLOSUM62.
