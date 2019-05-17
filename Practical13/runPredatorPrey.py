@@ -92,7 +92,7 @@ plt.xlabel('time')
 plt.ylabel('population size')
 #title
 plt.title('Time course')
-plt.show()
+plt.savefig(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical13\time course',type='png')
 
 
 #########limit cycle visualization#############################################
@@ -106,7 +106,7 @@ plt.xlabel('predator population')
 plt.ylabel('prey population')
 #title
 plt.title('Limit cycle')
-plt.show()
+plt.savefig(r'C:\Users\ROBIN\Desktop\GK project\IBI1_2018-19\Practical13\limmit cycle',type='png')
 
 
 #########change parameters and visualization###################################
@@ -167,10 +167,10 @@ plt.show()
 #WHILE T<=200:
     #OPEN file predator-prey.xml
     #T+=1
-    #SET ATTRIBUTE k_predator_dies as 0.001*T, the other parameters are the same as the previous task (k_predator_breeds=0.3,k_prey_breeds=0.9,k_prey_dies=0.3)
+    #SET ATTRIBUTE: k_predator_dies as 0.001*T, the other parameters are the same as the previous task (k_predator_breeds=0.3,k_prey_breeds=0.9,k_prey_dies=0.3)
     #rewrite predator-prey.xml znd close it
     #use function xml_to_cps() to get csv file
-    #WITH csv file OPEN, convert it to numpy arrays like the previous tasks
+    #WITH csv file OPEN, convert it to numpy arrays just like the previous tasks
     #in the console, plot using time course (with labels specified each time)
     
 #analysis: 
